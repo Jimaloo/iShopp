@@ -40,8 +40,7 @@ public class VendorRegistration extends AppCompatActivity {
 
     private Button mRegisterVendor;
 
-    private FirebaseDatabase mFirebaseDatabase;
-    private DatabaseReference mDatabaseReference;
+    private final FirebaseDatabase database = new FirebaseManager().database;
 
 
     @Override
@@ -104,8 +103,7 @@ public class VendorRegistration extends AppCompatActivity {
     }
 
     private void saveVendorDetails(){
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference();
+        DatabaseReference mDatabaseReference = database.getReference();
         final Vendor mVendor = new Vendor();
         mVendor.setBusiness_name(mBusinessName.getText().toString());
         mVendor.setBusiness_description(mBusinessDescription.getText().toString());
